@@ -8,7 +8,7 @@ import java.util.UUID;
 
 public interface IProfessorList extends Remote{
 	public IProfessor addProf(String name, EnumSet<Modules> modules) throws RemoteException;
-	public IProfessor deleteProf(UUID uuid) throws RemoteException;
+	public boolean deleteProf(UUID uuid) throws RemoteException;
 	public List<IProfessor> findProf(String searchKey) throws RemoteException;
 	public List<IProfessor> findProfModule(Modules module) throws RemoteException;
 }

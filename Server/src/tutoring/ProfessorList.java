@@ -26,13 +26,14 @@ public class ProfessorList extends UnicastRemoteObject implements IProfessorList
 	}
 	
 	@Override
-	public Professor deleteProf(UUID uuid) throws RemoteException {
+	public boolean deleteProf(UUID uuid) throws RemoteException {
 		for(Professor prof : database) {
 			if(prof.getUUID() == uuid) {
-				return prof;
+				database.remove(prof);
+				return true;
 		    }
 		}
-		return null;
+		return false;
 	}
 	
 	public List<IProfessor> findProf(String searchKey) throws RemoteException {

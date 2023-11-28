@@ -4,7 +4,7 @@ import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
-import java.util.EnumSet;
+import java.util.List;
 
 
 public class Main {
@@ -13,18 +13,27 @@ public class Main {
 		IProfessorList professor_list;
 		try {
 			professor_list = (IProfessorList) Naming.lookup("rmi://127.0.0.1:1101/professor_list");
-			System.out.println("Enroll prof");
-			EnumSet<Modules> modules = EnumSet.of(Modules.Mathemathics, Modules.Algorithmic);
-			IProfessor prof = professor_list.addProf("Professor 1", modules);
-			System.out.println("Prof " + prof.getName() + " with id  " +prof.getUUID() + "is registred. ");
+
+			System.out.println("Find prof with string");
+			List<IProfessor> profSearch = professor_list.findProf("Prof");
+			for (IProfessor prof : profSearch) {
+				System.out.println("Prof " + prof.getName() + " with id  " +prof.getUUID() + "is found. ");
+			}
 			
-			// TODO Auto-generated catch block
+			System.out.println("Find prof with modules");
+			List<IProfessor> profSearchM = professor_list.findProfModule(Modules.Algorithmic);
+			for (IProfessor prof : profSearchM) {
+				System.out.println("Prof " + prof.getName() + " with id  " +prof.getUUID() + "is found. ");
+			}
+			
 		}  catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} 
+		}
+		 
+
 	}
 }

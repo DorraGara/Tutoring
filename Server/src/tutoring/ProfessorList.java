@@ -3,6 +3,7 @@ package tutoring;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
+import java.util.EnumSet;
 import java.util.List;
 import java.util.UUID;
 
@@ -17,7 +18,7 @@ public class ProfessorList extends UnicastRemoteObject implements IProfessorList
 
 	
 	@Override
-	public Professor addProf(String name, Modules[] modules) throws RemoteException {
+	public Professor addProf(String name, EnumSet<Modules> modules) throws RemoteException {
 		// TODO Auto-generated method stub
 		Professor prof = new Professor(name, modules);
 		this.database.add(prof);
@@ -34,12 +35,24 @@ public class ProfessorList extends UnicastRemoteObject implements IProfessorList
 		return null;
 	}
 	
-	public Professor findProf(String searchKey) throws RemoteException {
+	public List<IProfessor> findProf(String searchKey) throws RemoteException {
+		List<IProfessor> found_professors = new ArrayList<>();
 		for(Professor prof : database) {
-			if(prof.getName().equals(searchKey) ) {
-		        return prof;
+			if(prof.getName().contains(searchKey) ) {
+		       found_professors.add(prof);
 		    }
 		}
-		    return null;	
+		    return found_professors;	
+	}
+	
+	public List<IProfessor> findProfModule(Modules module) throws RemoteException {
+		List<IProfessor> found_professors = new ArrayList<>();
+		for(Professor prof : database) {
+			EnumSet<Modules> mod = prof.getModules();
+			if(mod.contains(module) ) {
+				found_professors.add(prof);
+		    }
+		}
+		    return found_professors;	
 	}
 }

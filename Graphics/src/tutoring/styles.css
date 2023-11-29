@@ -1,0 +1,21 @@
+/* Define styles for labels */
+.label {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+/* Define styles for text fields */
+.text-field {
+    -fx-prompt-text-fill: gray;
+}
+
+/* Define styles for buttons */
+.button {
+    -fx-background-color: #4CAF50; /* Green */
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+}
+/* Define styles for ComboBox */
+.combo-box {
+    -fx-font-size: 14px;
+}

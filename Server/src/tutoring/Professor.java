@@ -9,6 +9,9 @@ import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.List;
 import java.util.UUID;
+import tutoring.*;
+import tutoring.Modules;
+import tutoring.Level;
 
 public class Professor extends UnicastRemoteObject implements IProfessor {
 	UUID uuid;

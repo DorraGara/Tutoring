@@ -1,4 +1,16 @@
 /* Define styles for labels */
+.image {
+    /* Set background image */
+    -fx-background-image: url('assets/photos/elearning.jpg');
+    /*-fx-background-color: #FFF000;*/
+    /* Preserve the aspect ratio of the background image */
+      -fx-background-size: cover;
+    -fx-background-position: center;
+}
+.overlay {
+    /* Semi-transparent dark background */
+    -fx-background-color: rgba(0, 0, 0, 0.2);
+}
 .label {
     -fx-font-size: 14px;
     -fx-font-weight: bold;
@@ -7,15 +19,41 @@
 /* Define styles for text fields */
 .text-field {
     -fx-prompt-text-fill: gray;
+    -fx-pref-width: 200;
+    -fx-pref-height: 40;
+    -fx-background-color: white;
+    -fx-background-insets: 0;
+    -fx-padding: 0.25em 0.25em 0.25em 0.25em; /* Adjust padding to match the default */
+    -fx-text-box-border: transparent;
+    -fx-text-box-border-width: 1;
+    -fx-text-box-border-color: #041444;
+    -fx-highlight-fill: -fx-control-inner-background;
+    -fx-highlight-text-fill: -fx-text-inner-color;
 }
 
 /* Define styles for buttons */
 .button {
-    -fx-background-color: #4CAF50; /* Green */
+    -fx-background-color: #041444; /* Green */
     -fx-text-fill: white;
     -fx-font-size: 14px;
+    -fx-pref-width: 200;
+    -fx-pref-height: 40;
+    -fx-font-weight: bold;
 }
 /* Define styles for ComboBox */
 .combo-box {
-    -fx-font-size: 14px;
+	 -fx-font-size: 14px;
+     -fx-pref-width: 200;
+     -fx-pref-height: 40;
+     -fx-background-color: white;
+    -fx-background-insets: 0;
+    -fx-padding: 0.25em 0.25em 0.25em 0.25em; /* Adjust padding to match the default */
+    -fx-text-box-border: transparent;
+    -fx-text-box-border-width: 1;
+    -fx-text-box-border-color: #041444;
+    -fx-highlight-fill: -fx-control-inner-background;
+    -fx-highlight-text-fill: -fx-text-inner-color;
+}
+.split-pane > .split-pane-divider {
+    -fx-background-color: transparent;
 }

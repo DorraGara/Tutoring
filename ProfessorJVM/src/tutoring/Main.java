@@ -8,6 +8,7 @@ import java.util.EnumSet;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -15,9 +16,11 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextField;
+import javafx.scene.effect.BoxBlur;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -33,6 +36,8 @@ public class Main  extends Application{
 	        Label tutorLabel = new Label("Tutor name");
 	        tutorLabel.getStyleClass().add("label");
 	        Label familyLabel = new Label("Family name");
+	        Label ModuleLabel = new Label("Module");
+	        ModuleLabel.getStyleClass().add("label");
 	        Label label = new Label("");
 
 	        TextField tutorTextField = new TextField();
@@ -46,6 +51,7 @@ public class Main  extends Application{
 	        ComboBox<Modules> moduleComboBox = new ComboBox<>(modulesList);
 	        moduleComboBox.setPromptText("Select Module");
 	        moduleComboBox.getStyleClass().add("combo-box");
+	        
 	        
 
 	        Button submitButton = new Button("Submit");
@@ -75,6 +81,11 @@ public class Main  extends Application{
 
 	                String greeting = "Hello, " + tutorName + " " + familyName + "!\nSelected Module: " + selectedModule;
 	                label.setText(greeting);
+	                WelcomePage welcomePage = new WelcomePage(tutorName);
+	                Scene welcomeScene = new Scene(welcomePage, 1000, 600);
+
+	                // Set the new scene for the primary stage
+	                primaryStage.setScene(welcomeScene);
 	            } else {
 	                // Handle the case where no module is selected
 	                label.setText("Please select a module.");
@@ -83,27 +94,42 @@ public class Main  extends Application{
 	        submitButton.getStyleClass().add("button");
 
 	        // Create an HBox layout and add the labels, text fields, and button to it
-	        HBox Tutorbox = new HBox(10);
-	        Tutorbox.setAlignment(Pos.CENTER);
+	        VBox Tutorbox = new VBox(5);
 	        Tutorbox.getChildren().addAll(tutorLabel, tutorTextField);
-	        HBox Familybox = new HBox(10);
-	        Familybox.setAlignment(Pos.CENTER);
+	        VBox Familybox = new VBox(5);
 	        Familybox.getChildren().addAll(familyLabel, familyTextField);
-	        HBox Modulebox = new HBox(10);
-	        Modulebox.setAlignment(Pos.CENTER);
-	        Modulebox.getChildren().addAll(moduleComboBox);
+	        VBox Modulebox = new VBox(10);
+	        Modulebox.getChildren().addAll(ModuleLabel,moduleComboBox);
 	        HBox Buttonbox = new HBox(10);
-	        Buttonbox.setAlignment(Pos.CENTER);
+	        Buttonbox.setAlignment(Pos.BASELINE_RIGHT);
 	        Buttonbox.getChildren().addAll(submitButton);
 
-	        // Create a VBox layout and add the HBox and label to it
+	       /* double imageWidth = primaryStage.getWidth() * 0.4;
+
+	        ImageView imageView = new ImageView(new Image(getClass().getResourceAsStream("/tutoring/assets/photos/elearning.jpg")));
+	        imageView.setFitHeight(600);
+	        imageView.setFitWidth(imageWidth);
+	        imageView.setPreserveRatio(true);*/
+
+	        // Create a VBox layout for the image
+	    //    VBox imageVBox = new VBox(imageView);
+	        VBox imageVBox = new VBox(20);
+	        imageVBox.getStyleClass().add("image");
+	        BoxBlur blur = new BoxBlur(10, 10, 3);
+	        imageVBox.setEffect(blur);
+	        // Create a VBox layout for the form
 	        VBox formVBox = new VBox(20);
 	        formVBox.setAlignment(Pos.CENTER);
 	        formVBox.getChildren().addAll(Tutorbox, Familybox, Modulebox, Buttonbox, label);
+	        formVBox.setPadding(new Insets(10, 20, 10, 20));
+	        
 
-	
+	        // Create a SplitPane to horizontally split the image and form
+	        SplitPane splitPane = new SplitPane(imageVBox, formVBox);
+	        splitPane.setDividerPositions(0.55); // Set the divider position (40% split)
+
 	        // Create a scene with the SplitPane
-	        Scene scene = new Scene(formVBox, 1000, 600);
+	        Scene scene = new Scene(splitPane, 1000, 600);
 	        scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
 
 	        // Set the scene for the primary stage

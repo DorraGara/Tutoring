@@ -15,4 +15,6 @@ public interface IProfessor extends Remote{
 	public boolean createSession(Modules module, Level level, int capacity, LocalTime startTime, LocalTime endTime,LocalDate date, double price, Currency currency) throws RemoteException;
 	public boolean deleteSession(UUID uuid) throws RemoteException;
 	public List<ISession> getSessions() throws RemoteException;
+	public List<ISession> getNextSessions(LocalDate date) throws RemoteException;
+	public List<ISession> getNextSessionsMod(LocalDate date, Modules mod) throws RemoteException;
 }

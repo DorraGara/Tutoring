@@ -55,4 +55,27 @@ public class Professor extends UnicastRemoteObject implements IProfessor {
 		}
 		return false;
 	}
+	
+	public List<ISession> getNextSessions(LocalDate date) throws RemoteException {
+		List<ISession> sessions = new ArrayList<>();
+		for(Session sess : this.sessions) {
+			LocalDate localdate = sess.getDate();
+			if(localdate.isAfter(date)) {
+				sessions.add(sess);
+		    }
+		}
+		return sessions;	
+	}	
+	
+	public List<ISession> getNextSessionsMod(LocalDate date, Modules mod) throws RemoteException {
+		List<ISession> sessions = new ArrayList<>();
+		for(Session sess : this.sessions) {
+			LocalDate localdate = sess.getDate();
+			Modules localMod = sess.getModule();
+			if(localdate.isAfter(date) && (localMod == mod) ) {
+				sessions.add(sess);
+		    }
+		}
+		return sessions;	
+	}
 }

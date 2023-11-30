@@ -34,7 +34,7 @@ public class Session extends UnicastRemoteObject implements ISession{
         return uuid;
     }
     
-    /**
+    
     public Modules getModule() {
         return module;
     }
@@ -65,7 +65,7 @@ public class Session extends UnicastRemoteObject implements ISession{
     public Currency getCurrency() {
         return currency;
     }
-    
+    /**
     // Setters
     public void setModule(Modules module) {
         this.module = module;

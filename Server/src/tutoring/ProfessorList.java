@@ -2,6 +2,7 @@ package tutoring;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.List;
@@ -55,5 +56,14 @@ public class ProfessorList extends UnicastRemoteObject implements IProfessorList
 		    }
 		}
 		    return found_professors;	
+	}
+	
+	public List<ISession> findFutureSessionModule(LocalDate date, Modules module) throws RemoteException {
+		List<ISession> sessions = new ArrayList<>();
+		for(Professor prof : database) {
+			List<ISession> nextSessions = prof.getNextSessionsMod(date, module);
+			sessions.addAll(nextSessions);		
+		}
+		return sessions;
 	}
 }

@@ -7,7 +7,7 @@ import java.time.LocalTime;
 
 public interface ISession extends Remote {
 	
-	/**
+	
     // Getter methods
     Modules getModule() throws RemoteException;
 
@@ -22,7 +22,8 @@ public interface ISession extends Remote {
     double getPrice() throws RemoteException;
 
     Currency getCurrency() throws RemoteException;
-
+    
+    /**
     // Setter methods
     void setModule(Modules module) throws RemoteException;
 

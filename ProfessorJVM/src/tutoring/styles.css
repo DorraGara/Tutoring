@@ -1,4 +1,7 @@
 /* Define styles for labels */
+.root{
+	-fx-background-color: #F5F5F5;
+}
 .image {
     /* Set background image */
     -fx-background-image: url('assets/photos/elearning.jpg');
@@ -6,6 +9,26 @@
     /* Preserve the aspect ratio of the background image */
       -fx-background-size: cover;
     -fx-background-position: center;
+    
+}
+.avatar {
+    /* Set background image */
+    -fx-background-image: url('assets/photos/avatar.png');
+   /*  -fx-background-color: #FFF000;*/
+    /* Preserve the aspect ratio of the background image */
+      -fx-background-size: cover;
+    -fx-background-position: center;
+    -fx-pref-width: 40;
+    -fx-pref-height: 40;
+    -fx-padding: 0 10 0 0;
+   /* -fx-background-radius: 50; */
+}
+.titles{
+	-fx-font-size: 40px;
+	-fx-font-weight: bold;
+}
+.desc{
+	-fx-font-size: 10;
 }
 .overlay {
     /* Semi-transparent dark background */
@@ -13,7 +36,7 @@
 }
 .label {
     -fx-font-size: 14px;
-    -fx-font-weight: bold;
+ /*  -fx-font-weight: bold;*/
 }
 
 /* Define styles for text fields */
@@ -57,3 +80,35 @@
 .split-pane > .split-pane-divider {
     -fx-background-color: transparent;
 }
+.menu{
+	-fx-border-width: 0 1 0 0; /* top, right, bottom, left */
+    -fx-border-color: #041444;
+}
+.header{
+	-fx-border-width: 0 0 1 0; 
+    -fx-border-color:  #041444;
+}
+.mainpage{
+    -fx-pref-height: 800;
+}
+.menuItem{
+	-fx-font-size: 14px;
+	-fx-font-weight: bold;
+}
+.menu .menuItem.selected {
+    -fx-font-weight: bold;
+    -fx-background-color: #041444;
+    -fx-text-fill: white;
+}
+.menu .menuItem:hover {
+    -fx-font-weight: bold;
+    -fx-background-color: #041444;
+    -fx-text-fill: white;
+}
+
+
+
+.button:hover {
+    -fx-effect: dropshadow(gaussian, #000, 10, 0, 0, 0);
+}
+

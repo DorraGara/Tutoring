@@ -20,4 +20,9 @@ public class Student extends UnicastRemoteObject implements IStudent {
 	public String getName() throws RemoteException {
 		return this.name;
 	}
+	
+	//We can try to return an Alert dunno if it exist in JAVAFX
+	public ISession notifyStudent(ISession session) throws RemoteException {
+		return session;
+	}
 }
